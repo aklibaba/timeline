@@ -1,0 +1,33 @@
+{
+  "name": "gulp-compass-autoprefixer",
+  "version": "1.0.0",
+  "description": "I freaking love working with technologies like Grunt and Gulp, and wanted to share how to get my current EE front-end workflow set up. With a few tweaks, this can also be used with virtually any other sites (I've used it with Laravel, static sites, Craft, etc).",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {    
+    "gulp": "^3.9.1",
+    "gulp-compass": "^2.1.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3"},
+
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/aklibaba/gulp-compass-autoprefixer.git)"
+  },
+  "keywords": [
+    "gulp",
+    "compass",
+    "autoprefixer"
+  ],
+  "author": "",
+  "license": "ISC"
+}

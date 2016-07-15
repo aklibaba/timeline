@@ -1,0 +1,107 @@
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding-top: 50px;
+  background: #fff;
+
+  @include breakpoint(0 $small) {
+    margin-left: 20px; //move vertical line from horizontal center to 20px from left
+  }
+
+    div { //base styles for div
+      position: relative;
+      bottom: 0;
+      width: 400px;
+      padding: 15px;
+      background: #F45B69;
+
+      @include breakpoint(0 $medium) {
+        width: 250px; 
+      }
+
+      @include breakpoint(0 $small) {
+            width: calc(100vw - 150px);
+      }
+
+      &::before {
+        content:'';
+        position: absolute;
+        bottom: 7px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        } //before
+      } //div
+
+    div { //styles to hide div when not in-view
+      visibility: hidden; //apart from opactity 0 we use vis hidden to remove it from taborder and events participaton
+      opacity: 0;
+      transition: all 1s ease-out;
+    }
+
+
+    //styles for odd elements
+    &:nth-child(odd) div {
+      left: 45px;
+      transform: translateX(200px);
+
+      &:before {
+        left: -15px;
+        border-width: 8px 16px 8px 0;
+        border-color: transparent #F45B69 transparent transparent;
+        }//before
+    }//odd div
+
+    //styles for even elements
+    &:nth-child(even) div {
+      left: -439px;
+      transform : translateX(-200px);
+
+      &:before {
+        right: -15px;
+        border-width: 8px 0 8px 16px;
+        border-color: transparent transparent transparent #F45B69;
+        }//before
+
+      @include breakpoint(0 $medium) {
+        left: -289px; //we move the box to the left of the vertical line by its width 250px plus the spacing of 45px and deduct 6px of the vertical line width
+      }
+
+      @include breakpoint(0 $small) {
+        left: 45px;
+
+        &:before {
+            left: -15px;
+            border-width: 8px 16px 8px 0;
+            border-color: transparent #F45B69 transparent transparent;
+        }
+      } //bp small
+
+    }//even div
+
+    &.in-view div { //styles to reveal div when comes in view
+      visibility: visible; //bring back visibility, why use it see above
+      opacity: 1;
+      transform: none; //bring back div to normal position, cancel transform so transition works
+    }
+    
+    &:after { //the circle element on the vertical line
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #fff;
+      transition: background .5s ease-in-out;
+    }
+
+    &.in-view::after { //when we reveal the circle transition to a different color
+      background: #f45b69;
+    }
+
+}
